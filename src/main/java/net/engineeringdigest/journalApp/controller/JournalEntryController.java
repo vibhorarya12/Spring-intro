@@ -1,6 +1,8 @@
 package net.engineeringdigest.journalApp.controller;
 
 import net.engineeringdigest.journalApp.entries.Employees;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -26,8 +28,14 @@ public class JournalEntryController {
 
     // get employee by id //
     @GetMapping("id/{empID}")
-    public  Employees getById(@PathVariable Long  empID){
-          return  entries.get(empID.toString());
+    public  ResponseEntity<?> getById(@PathVariable Long  empID){
+
+         if(entries.containsKey(empID.toString())){
+
+             return new ResponseEntity<>(entries.get(empID.toString()), HttpStatus.OK);
+         }
+
+          return new ResponseEntity<>( "No record found", HttpStatus.NOT_FOUND);
     }
 
 
