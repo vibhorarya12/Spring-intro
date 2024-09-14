@@ -20,6 +20,22 @@ public class UserEntity {
     private  String username;
     private  String password;
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setRoles(List<Roles> roles) {
+        this.roles = roles;
+    }
+
     public String getUsername() {
         return username;
     }
